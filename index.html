@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>all password</title>
+    <style>
+      button,
+      .hand {
+        user-select: none;
+      }
+
+      body {
+        background-color: #222;
+        margin: 0;
+        color: #fff;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      header,
+      footer {
+        background-color: #b5b5b552;
+        height: 75px;
+        max-height: 75px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 15px
+      }
+
+      header .logo img,
+      footer .logo img {
+        width: 100px;
+        filter: grayscale(.8);
+        user-select: none;
+        transform: scale(3, -2);
+        transition: transform .3s linear;
+      }
+
+      header:hover img,
+      footer:hover img {
+        transform: scale(3, 2);
+      }
+
+      .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 10px 30px;
+      }
+
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px;
+        }
+      }
+
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px;
+        }
+      }
+
+      .col,
+      .container0 {
+        background-color: #444;
+        border: 1px solid #ffa500;
+        color: #fff;
+        box-shadow: inset 0 -35px 7px 40px #02303e9c;
+        padding: 10px 20px;
+        border-radius: 10px;
+        position: relative;
+      }
+
+      .container0 {
+        margin: 20px;
+        box-shadow: inset 0 0px 7px 31px #02303e9c;
+        position: relative;
+      }
+
+      .container0 h3 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        color: #1670c4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .divParint {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        z-index: 222;
+      }
+
+      .container0 button {
+        text-align: center;
+        font-size: 30px;
+        font-weight: 700;
+        cursor: pointer;
+        background-color: #1670c4;
+        color: #fff;
+        padding: 10px 30px;
+        border: 1px solid #000;
+        border-radius: 5px;
+        outline: none;
+        display: block;
+        margin: 0 auto 30px;
+      }
+
+      .col .hand {
+        font-size: 40px;
+        /* content: ''; */
+        /* border: 20px solid; */
+        /* border-color: transparent transparent transparent #098539; */
+        position: absolute;
+        top: 30%;
+        transform: translateY(-50%);
+        z-index: 50;
+        animation: left-to-right 3s infinite;
+      }
+
+      @keyframes left-to-right {
+
+        0%,
+        20%,
+        40%,
+        60%,
+        80%,
+        100% {
+          left: 10px;
+        }
+
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          left: -15px;
+        }
+      }
+
+      .col h1 {
+        text-align: center;
+        margin: 0;
+      }
+
+      .col p {
+        padding-top: 20px;
+        font-size: 20px;
+      }
+
+      .col p span {
+        color: rgb(9, 255, 0);
+        text-decoration: underline;
+        text-decoration-line: spelling-error;
+      }
+
+      .dis-none {
+        display: none;
+      }
+
+      .prompetdiv {
+        position: fixed;
+        top: 40%;
+        left: 50%;
+        width: 70%;
+        padding: 30px 10px;
+        transform: translate(-50%);
+        background-color: #333;
+        border: 2px solid #ffa500;
+        z-index: 2222;
+        border-radius: 20px;
+      }
+
+      .prompetdiv button.close {
+        position: absolute;
+        right: 1%;
+        top: 3%;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
+        border: 2px solid #ffa500;
+        background-color: transparent;
+        color: #f00;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .prompetdiv .span {
+        font-size: 28px;
+        color: #f00;
+        padding: 20px;
+        text-align: center;
+        display: block;
+      }
+
+      .prompetdiv div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: baseline;
+      }
+
+      .promptP {
+        letter-spacing: 1.25px;
+        font-weight: bold;
+        font-size: 26px;
+        color: #fff;
+        margin: 10px auto;
+        padding: 10px;
+        text-align: center;
+      }
+
+      .prompetinput {
+        margin: 10px auto;
+        display: block;
+        font-size: 20px;
+        padding: 5px 10px;
+        width: 90%;
+        border-radius: 10px;
+        color: var(--header-color);
+        border: 2px solid #ffa500;
+        background-color: #fff2;
+        /* -webkit-text-security: disc; */
+        outline: none;
+      }
+
+      .prompetinput:focus {
+        outline: none;
+      }
+
+      .promptButton {
+        font-size: 28px;
+        cursor: pointer;
+        margin-top: 40px;
+        padding: 5px 30px;
+        background-color: rgb(8, 116, 167);
+        border: 1px solid #222;
+        color: rgb(255, 255, 255);
+        font-weight: bold;
+        margin: 20px 20px 5px;
+        min-height: 55px
+      }
+
+      .promptButton:first-of-type {
+        font-size: 22px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="root">
+      <header>
+        <div class="logo">
+          <img src="logo.png" alt="my logo">
+        </div>
+      </header>
+      <div class="container">
+
+        <div class="facebook col after">
+          <span class="hand">👉</span>
+          <h1>the page name facebook</h1>
+          <p>user name is Reda Abdelwahed</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="gmial-me col after">
+          <span class="hand">👉</span>
+          <h1>redaalsnoty@gmail</h1>
+          <p>user name is redaalsnoty</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="gmial-work col after">
+          <span class="hand">👉</span>
+          <h1>redajavascript@gmail</h1>
+          <p>user name is redajavascript</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="gmial-work-1 col after">
+          <span class="hand">👉</span>
+          <h1>redamontageelzero@gmial</h1>
+          <p>user name is redamontageelzero</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="wi-fi col after">
+          <span class="hand">👉</span>
+          <h1>the page name is wi-fi</h1>
+          <p>user name is يوسف و حسن</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="freelancer col after">
+          <span class="hand">👉</span>
+          <h1>the page name is freelancer</h1>
+          <p>user name is redajavascript@gmail.com</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="wadhfny col after">
+          <span class="hand">👉</span>
+          <h1>the page name is wadhfny.com وظفني</h1>
+          <p>user name is redajavascript@gmail.com</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="hsoub-h col after">
+          <span class="hand">👉</span>
+          <h1>the page name is hsoub خمسات</h1>
+          <p>user name is redajavascript@gmail.com</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="hsoub-m col after">
+          <span class="hand">👉</span>
+          <h1>the page name is hsoub مستقل</h1>
+          <p>user name is redamontageelzero@gmail.com</p>
+          <p>the pass is <span></span></p>
+        </div>
+        <div class="github col after">
+          <span class="hand">👉</span>
+          <h1>the page name is github</h1>
+          <p>the gmail none no result</p>
+          <p>user name is RedaElzero</p>
+          <p>the pass is <span></span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      let fors = [
+        String.fromCharCode(114, 101, 100, 97, 35, 50, 48, 48, 53, 33),
+        String.fromCharCode(114, 101, 100, 97, 35, 50, 48, 48, 53, 33),
+        String.fromCharCode(82, 101, 100, 97, 35, 50, 48, 48, 53, 33, 82, 101, 100, 97),
+        String.fromCharCode(114, 101, 100, 97, 35, 114, 101, 100, 97),
+        String.fromCharCode(114, 101, 100, 97, 35, 114, 101, 100, 97),
+        String.fromCharCode(82, 101, 100, 97, 35, 50, 48, 48, 53, 33, 82, 101, 100, 97),
+        String.fromCharCode(1602, 1579, 1610, 1588, 35, 50, 48, 48, 53, 33, 1602, 1579, 1610, 1588),
+        String.fromCharCode(114, 101, 100, 97, 35, 50, 48, 48, 53, 33, 114, 101, 100, 97),
+        String.fromCharCode(82, 101, 100, 97, 35, 50, 48, 48, 53, 33, 114, 101, 100, 97),
+        String.fromCharCode(114, 101, 100, 97, 35, 50, 48, 48, 53, 33, 114, 101, 100, 97),
+      ];
+      // create my prompet
+      (function () {
+        // prompet button too be show;
+        let buttonprompetClick = document.createElement("button");
+        let buttonpopupText = document.createTextNode("show!");
+        let container = document.createElement("div");
+        let head = document.createElement("h3");
+        let headText = document.createTextNode("show input for wrieght password?");
+
+        head.className = "head3";
+        head.appendChild(headText);
+        buttonprompetClick.appendChild(buttonpopupText);
+        buttonprompetClick.className = "click";
+        container.className = "container0";
+        container.appendChild(head);
+        container.appendChild(buttonprompetClick);
+        document.body.appendChild(container);
+
+        // propmet Elements
+        buttonprompetClick.onclick = showPrompet;
+        window.onload = showPrompet;
+        function showPrompet() {
+          let divParint = document.createElement("div");
+
+          divParint.className = "divParint pa";
+          document.body.appendChild(divParint);
+
+          let promptP = document.createElement("p");
+          let prompetPText = document.createTextNode("type a password?");
+          let myAttrprompet = document.createAttribute("autofocus");
+          promptP.className = "promptP";
+          promptP.appendChild(prompetPText);
+
+          let prompetinput = document.createElement("input");
+          prompetinput.setAttribute("type", "password");
+          prompetinput.setAttribute("placeholder", "type a password...");
+          prompetinput.setAttributeNode(myAttrprompet);
+          prompetinput.setAttribute("class", "prompetinput");
+          prompetinput.setAttribute("value", "");
+          let promptButton = document.createElement("button");
+          let bottonParent = document.createElement("div");
+          let prompetButtonText = document.createTextNode("ok");
+          promptButton.appendChild(prompetButtonText);
+          promptButton.className = "promptButton";
+          let showButton = document.createElement("button");
+          let showButtonText = document.createTextNode("👀");
+          showButton.appendChild(showButtonText);
+          showButton.className = "promptButton";
+          bottonParent.appendChild(showButton)
+          bottonParent.appendChild(promptButton)
+          let closePrompet = document.createElement("button");
+          closePrompet.textContent = 'X';
+          closePrompet.classList = 'close';
+          let spanprompt = document.createElement("span");
+          spanprompt.className = "span";
+          let Prompetdiv = document.createElement("div");
+          Prompetdiv.className = "prompetdiv";
+          Prompetdiv.appendChild(closePrompet);
+          Prompetdiv.appendChild(promptP);
+          Prompetdiv.appendChild(prompetinput);
+          Prompetdiv.appendChild(spanprompt);
+          Prompetdiv.appendChild(bottonParent);
+          document.body.appendChild(Prompetdiv);
+          // document.body.style.overflow = "hidden";
+          function hied() {
+            Prompetdiv.style.display = "none";
+            divParint.style.display = "none";
+          }
+          closePrompet.onclick = hied;
+          showButton.onclick = function () {
+            prompetinput.classList.toggle('text');
+            if (document.querySelector('.text') !== null) {
+              document.querySelector('.text').setAttribute('type', 'text');
+            } else {
+              document.querySelector('.prompetinput').setAttribute('type', 'password');
+            }
+          }
+          let p = String.fromCharCode(1575, 1606, 1575, 32, 1575, 1604, 1608, 1591);
+          function cheek() {
+            if (prompetinput.value === p) {
+              document.querySelector(".facebook p span").innerHTML = fors[0];
+              document.querySelector(".gmial-me p span").innerHTML = fors[1];
+              document.querySelector(".gmial-work p span").innerHTML = fors[2];
+              document.querySelector(".gmial-work-1 p span").innerHTML = fors[3];
+              document.querySelector(".wi-fi p span").innerHTML = fors[4];
+              document.querySelector(".freelancer p span").innerHTML = fors[5];
+              document.querySelector(".wadhfny p span").innerHTML = fors[6];
+              document.querySelector(".hsoub-h p span").innerHTML = fors[7];
+              document.querySelector(".hsoub-m p span").innerHTML = fors[8];
+              document.querySelector(".github p span").innerHTML = fors[9];
+              hied()
+            } else if (prompetinput.value === 'أنت الوط' || prompetinput.value === 'انت الوط') {
+              document.querySelector('span.span').innerHTML = 'ههههه ههههههه 😂😆 ههههه';
+            } else if (prompetinput.value === '') {
+              document.querySelector('span.span').innerHTML = 'the input is empty you must writing password';
+            } else {
+              document.querySelector('span.span').innerHTML = 'لا يا الوط كلمة السر غلط حاول تكتب أنت الوط 🙋 واك 😝 ههههه';
+              document.querySelectorAll('.hand').forEach(element => {
+                element.innerHTML = '🙋 واك 😝'
+              });
+            }
+          }
+          promptButton.onclick = function () {
+            cheek();
+          };
+          document.addEventListener("keydown", (e) => {
+            switch (e.key.toLowerCase()) {
+              case "enter":
+                cheek();
+                break;
+              case "escape":
+                hied();
+                break;
+            }
+          });
+        };
+      })();
+    </script>
+
+    <footer>
+      <div class="logo">
+        <img src="logo.png" alt="my logo">
+      </div>
+    </footer>
+  </body>
+
+</html>
