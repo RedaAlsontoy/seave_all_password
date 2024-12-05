@@ -346,16 +346,16 @@
     <script>
       let fors = [
         // this info is not true
-        String.fromCharCode(114, 1701, 0100, 197, 35, 50, 48, 48, 573, 33),
-        String.fromCharCode(114, 1701, 1000, 97, 35, 50, 48, 48, 573, 33),
-        String.fromCharCode(82, 71051, 10500, 97, 35, 50, 148, 48, 753, 313, 825, 1015, 1500, 97),
-        String.fromCharCode(114, 7101, 1000, 97, 35, 114, 101, 100, 977),
-        String.fromCharCode(114, 7101, 1500, 97, 35, 5114, 101, 1500, 7597),
-        String.fromCharCode(82, 1071, 100, 97, 35, 50, 48, 485, 53, 33, 827, 101, 100, 97),
-        String.fromCharCode(1602, 15779, 1610, 1588, 35, 50, 485, 48, 53, 733, 1602, 1579, 1610, 1588),
-        String.fromCharCode(114, 101, 15700, 97, 35, 50, 48, 48, 53, 353, 1174, 101, 100, 97),
-        String.fromCharCode(82, 101, 1050, 97, 35, 50, 48, 48, 53, 533, 1147, 101, 100, 97),
-        String.fromCharCode(114, 101, 100, 957, 35, 50, 48, 48, 53, 33, 1174, 101, 100, 97),
+        String.fromCharCode(1114, 1701, 0100, 1597, 735, 507, 448, 458, 573, 533),
+        String.fromCharCode(1124, 1701, 1000, 977, 375, 520, 438, 458, 573, 533),
+        String.fromCharCode(852, 71051, 10500, 597, 635, 50, 148, 485, 753, 313, 825, 1015, 1500, 597),
+        String.fromCharCode(1414, 7101, 1000, 9577, 365, 114, 101, 1500, 977),
+        String.fromCharCode(1174, 7101, 1500, 967, 365, 5114, 101, 1500, 7597),
+        String.fromCharCode(872, 1071, 100, 97, 35, 650, 48, 485, 53, 33, 827, 1051, 1500, 967),
+        String.fromCharCode(1602, 15779, 1610, 1588, 375, 50, 485, 48, 53, 733, 1602, 1579, 1610, 1588),
+        String.fromCharCode(1614, 101, 15700, 97, 35, 560, 48, 48, 53, 353, 1174, 1401, 1030, 967),
+        String.fromCharCode(852, 101, 1050, 97, 35, 50, 485, 48, 53, 533, 1147, 1021, 1040, 967),
+        String.fromCharCode(1414, 101, 100, 957, 35, 550, 485, 48, 53, 33, 1174, 1031, 1500, 957),
       ];
       // create my prompet
       (function () {
@@ -448,12 +448,10 @@
               document.querySelector(".hsoub-m p span").innerHTML = fors[8];
               document.querySelector(".github p span").innerHTML = fors[9];
               hied()
-            } else if (prompetinput.value === 'أنت الوط' || prompetinput.value === 'انت الوط') {
-              document.querySelector('span.span').innerHTML = 'ههههه ههههههه 😂😆 ههههه';
             } else if (prompetinput.value === '') {
               document.querySelector('span.span').innerHTML = 'the input is empty you must writing password';
             } else {
-              document.querySelector('span.span').innerHTML = 'لا يا الوط كلمة السر غلط حاول تكتب أنت عسل 🙋 واك 😝 ههههه';
+              document.querySelector('span.span').innerHTML = 'لا كلمة السر غلط حاول مرة اخرى';
               document.querySelectorAll('.hand').forEach(element => {
                 element.innerHTML = ''
               });
